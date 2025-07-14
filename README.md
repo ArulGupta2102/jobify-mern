@@ -67,6 +67,10 @@ This project leverages Playwright MCP (Model-based Code Generation Platform) for
      npx playwright test -g "<Description of test you defines under test.describe()>"
      ```
    - This will execute the particular test case and generate report.
+   - View the report by typing:
+     ```bash
+     npx playwright show-report
+     ```
 
 3. **Generating New Test Cases with MCP:**
    - Playwright MCP can generate new test cases based on user flows or requirements.
