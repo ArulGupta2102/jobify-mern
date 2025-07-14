@@ -72,13 +72,8 @@ This project leverages Playwright MCP (Model-based Code Generation Platform) for
      npx playwright show-report
      ```
 
-3. **Generating New Test Cases with MCP:**
+3. **Generating New Test Cases with MCP or CLI:**
    - Playwright MCP can generate new test cases based on user flows or requirements.
-   - To generate a new test case, use the MCP interface or CLI (refer to Playwright MCP documentation for detailed instructions).
-   - Example (if using CLI):
-     ```bash
-     npx playwright codegen <url>
-     ```
    - If using MCP, setup the mcp in mcp.json file of Cursor/Windsurf by refering to MCP documentation. Then prompt the Chatbot with the following sample prompt:
     ```
     Generate Playwright test cases for the "editjob" feature, covering positive, negative, security, performance, UI/UX, data driven scenarios. Follow the project's modular test structure. Create different file for different scenario.
@@ -89,6 +84,12 @@ This project leverages Playwright MCP (Model-based Code Generation Platform) for
     On each Job list there should be a Edit Button. Click anyone if  any job exists
     Then a form will open where you can change values
     ```
+   - You can also use CLI (refer to Playwright MCP documentation for detailed instructions).
+   - Example (if using CLI):
+     ```bash
+     npx playwright codegen <url>
+     ```
+     This will initialize the recorder and will generate code on every interaction
 
    - Generated tests can be placed in the appropriate subdirectory under `tests/`.
 
