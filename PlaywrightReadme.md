@@ -66,6 +66,7 @@ Include accessibility checks if applicable.
 
 ## 5. What is Valid Data for Positive Test Cases?
 
+Example
 For the **login** feature, valid data for positive test cases typically includes:
 - A registered user email that exists in the system.
 - The correct password associated with that email.
