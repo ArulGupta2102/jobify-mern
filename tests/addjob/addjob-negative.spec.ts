@@ -1,13 +1,11 @@
-import { test, expect } from '@playwright/test';
-import { userBeforeEach } from '../common.setup';
+import { test } from '@playwright/test';
+import { AddJobPage } from './AddJobPage';
 
 test.describe('AddJob - Negative Scenarios', () => {
-  test.beforeEach(async ({ page }) => {
-    await userBeforeEach(page);
-  });
-
   test('should show validation errors for empty required fields', async ({ page }) => {
-    await page.getByRole('button', { name: /submit/i }).click();
-    await expect(page.getByText(/required/i)).toBeVisible();
+    const addJob = new AddJobPage(page);
+    await addJob.goto();
+    await addJob.submit();
+    await addJob.expectValidationError();
   });
 }); 

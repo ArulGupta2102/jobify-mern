@@ -1,17 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { userBeforeEach } from '../common.setup';
+import { AddJobPage } from './AddJobPage';
 
 test.describe('AddJob - UI/UX Scenarios', () => {
-  test.beforeEach(async ({ page }) => {
-    await userBeforeEach(page);
-  });
-
-  test('should have all required fields and submit button', async ({ page }) => {
-    await expect(page.getByLabel(/position/i)).toBeVisible();
-    await expect(page.getByLabel(/company/i)).toBeVisible();
-    await expect(page.getByLabel(/job location/i)).toBeVisible();
-    await expect(page.getByLabel(/job status/i)).toBeVisible();
-    await expect(page.getByLabel(/job type/i)).toBeVisible();
-    await expect(page.getByRole('button', { name: /submit/i })).toBeVisible();
+  test('should have all required fields and submit button visible and accessible', async ({ page }) => {
+    const addJob = new AddJobPage(page);
+    await addJob.goto();
+    await addJob.checkAllFieldsVisible();
+    // Accessibility check (axe-core or built-in)
+    await expect(page).toPassA11y(); // If using @playwright/test-accessibility
   });
 }); 

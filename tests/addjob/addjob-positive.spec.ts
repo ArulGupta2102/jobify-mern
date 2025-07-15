@@ -1,19 +1,16 @@
-import { test, expect } from '@playwright/test';
-import { userBeforeEach } from '../common.setup';
+import { test } from '@playwright/test';
+import { AddJobPage } from './AddJobPage';
+import { randomJobData } from './addJobFactory';
 
 test.describe('AddJob - Positive Scenarios', () => {
-  test.beforeEach(async ({ page }) => {
-    await userBeforeEach(page);
-  });
-
-  test('should add a job with valid data', async ({ page }) => {
-    await page.getByLabel(/position/i).fill('Software Engineer');
-    await page.getByLabel(/company/i).fill('Acme Corp');
-    await page.getByLabel(/job location/i).fill('Remote');
-    await page.getByLabel(/job status/i).selectOption('pending');
-    await page.getByLabel(/job type/i).selectOption('full-time');
-    await page.getByRole('button', { name: /submit/i }).click();
-    await expect(page.getByText(/job added successfully/i)).toBeVisible();
-    await expect(page).toHaveURL(/all-jobs/);
+  test('should add a job with random valid data and see success', async ({ page }) => {
+    const addJob = new AddJobPage(page);
+    await addJob.goto();
+    // Use the data factory to generate random valid job data
+    const job = randomJobData();
+    await addJob.fillJob(job);
+    await addJob.submit();
+    await addJob.expectSuccess();
+    // TODO: Clean up created job if API allows
   });
 }); 
