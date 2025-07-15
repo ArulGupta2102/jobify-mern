@@ -19,8 +19,8 @@ Use the following template prompt to instruct Playwright MCP to generate test ca
 Generate Playwright test cases for the {target} feature, covering positive, negative, security, performance, UI/UX, and data-driven scenarios.
 Follow the project’s modular test structure and best practices as outlined in the README:
 
-Use the Page Object Model for all UI interactions.
-Utilize any existing Page Object Model for recurring UI interactions (e.g. for edit user feature, utilize already made login Page object model for login instead of regenerating whole code)
+Generate the Page Object Model for all UI interactions.
+Utilize any existing Page Object Model for recurring UI interactions (e.g. for edit user feature, utilize already made login Page Object Model if it exists for login instead of regenerating whole code, then generate logic for testing edit user feature.)
 Prefer resilient selectors (getByRole, getByLabel, getByTestId) for stability and accessibility.
 Use shared helpers and test data factories for setup and data management. No hard coded data for testing.
 Assert both UI and network responses where relevant.
@@ -66,7 +66,7 @@ Include accessibility checks if applicable.
 
 ## 5. What is Valid Data for Positive Test Cases?
 
-Example
+Example:
 For the **login** feature, valid data for positive test cases typically includes:
 - A registered user email that exists in the system.
 - The correct password associated with that email.
@@ -97,7 +97,7 @@ Generate Playwright test cases for the "login" feature, covering positive, negat
 Follow the project’s modular test structure and best practices as mentioned below:
 
 Generate the Page Object Model for all UI interactions.
-Utilize any existing Page Object Model for recurring UI interactions (e.g. for edit user feature, utilize already made login Page object model for login instead of regenerating whole code if it exists.)
+Utilize any existing Page Object Model for recurring UI interactions (e.g. for edit user feature, utilize already made login Page Object Model if it exists for login instead of regenerating whole code, then generate logic for testing edit user feature.)
 Prefer resilient selectors (getByRole, getByLabel, getByTestId) for stability and accessibility.
 Use shared helpers and test data factories for setup and data management. No hard coded data for testing.
 Assert both UI and network responses where relevant.
